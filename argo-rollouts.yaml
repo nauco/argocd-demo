@@ -10,7 +10,7 @@ spec:
   project: apps
 
   source:
-    path: argo-rollouts-demo/blue-green
+    path: argo-rollouts-demo/blue-green.yaml
     repoURL: https://github.com/jenana-devops/argocd-demo.git
     targetRevision: HEAD
 
