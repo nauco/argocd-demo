@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: argo-rollouts
+  name: app-of-apps
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io  
@@ -10,12 +10,12 @@ spec:
   project: apps
 
   source:
-    path: argo-rollouts-demo/blue-green
+    path: app-of-apps
     repoURL: https://github.com/jenana-devops/argocd-demo.git
     targetRevision: HEAD
 
   destination:
-    namespace: argo-rollouts
+    namespace: app-of-apps
     server: "https://kubernetes.default.svc"
 
   syncPolicy:
