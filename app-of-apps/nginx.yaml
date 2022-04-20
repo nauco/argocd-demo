@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: tomcat
+  name: nginx
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io  
@@ -10,12 +10,12 @@ spec:
   project: apps
 
   source:
-    path: charts/tomcat
+    path: charts/nginx
     repoURL: https://github.com/jenana-devops/argocd-demo.git
     targetRevision: HEAD
 
   destination:
-    namespace: tomcat
+    namespace: nginx
     server: "https://kubernetes.default.svc"
 
   syncPolicy:

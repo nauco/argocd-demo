@@ -25,7 +25,7 @@ spec:
       source:
         repoURL: https://github.com/jenana-devops/argocd-demo.git
         targetRevision: HEAD
-        path: app-of-apps/{{app}}
+        path: charts/{{app}}
 
       destination:
         server: 'https://kubernetes.default.svc'
