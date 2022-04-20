@@ -1,0 +1,39 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: application-set
+  namespace: argocd
+  #finalizers:
+    #- resources-finalizer.argocd.argoproj.io    
+    
+spec:
+  generators:
+  - list:
+      elements:
+      - app: apache 
+      - app: jenkins
+      - app: nginx
+      - app: tomcat             
+
+  template:
+    metadata:
+      name: '{{app}}'
+
+    spec:
+      project: apps
+
+      source:
+        repoURL: https://github.com/jenana-devops/argocd-demo.git
+        targetRevision: HEAD
+        path: app-of-apps/{{app}}
+
+      destination:
+        server: 'https://kubernetes.default.svc'
+        namespace: application-set
+
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=true
