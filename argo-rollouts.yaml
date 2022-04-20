@@ -10,12 +10,12 @@ spec:
   project: apps
 
   source:
-    path: argo-rollouts-demo/blue-green
+    path: argo-rollouts-demo
     repoURL: https://github.com/jenana-devops/argocd-demo.git
     targetRevision: HEAD
 
   destination:
-    namespace: argo-rollouts
+    namespace: bluegreen
     server: "https://kubernetes.default.svc"
 
   syncPolicy:
