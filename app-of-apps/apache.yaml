@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: apache
-  namespace: argocd
+  namespace: argo-cd
   finalizers:
     - resources-finalizer.argocd.argoproj.io  
   
@@ -11,7 +11,7 @@ spec:
 
   source:
     path: charts/apache
-    repoURL: https://github.com/jenana-devops/argocd-demo.git
+    repoURL: https://github.com/nauco/argocd-demo.git
     targetRevision: HEAD
 
   destination:
